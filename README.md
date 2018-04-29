@@ -1,7 +1,7 @@
 # bklk
 
 <p align="center">
-<img src='demo.gif' width=300px>
+<img src='demo.gif' width=500px>
 </p>
 
 ---
