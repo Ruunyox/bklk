@@ -6,7 +6,7 @@
 
 ---
 
-`bklk` is a simple binary clokc for your terminal. `c` cycles the
+`bklk` is a simple binary clock for your terminal. `c` cycles the
 color and `q` quits. Type `make` to install. 
 
 # Dependencies
