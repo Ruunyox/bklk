@@ -65,11 +65,6 @@ class binclock {
 		for(int j=0;j<6;j++){
 			if(j%2 == 0){
 				k++;	
-				if(j >0){
-					attron(COLOR_PAIR(2));
-				//	mvvline(sizey/2-4,(sizex-42)/2+(4*j)+(5*k)-4,ACS_VLINE,7);
-					attroff(COLOR_PAIR(2));
-				}
 			}
 			mask = mkMask(digits[j],mask);
 			for(int i=0;i<4;i++){
