@@ -19,7 +19,7 @@ void cursesInit(void){
 class binclock {
 	public:
 	
-	int sizey,sizex;
+	int sizey,sizex,fg;
 	const char *type;
 	time_t t;
 	char tstring[BUFSZ]; 
@@ -27,9 +27,9 @@ class binclock {
 	int digits[6];
 	int *mask;	
 	
-	binclock(int fg, int bg, int rows, int cols,const char *i_type = "full") {
-		init_pair(1,fg,bg);
-		init_pair(2,0,bg);
+	binclock(int i_fg, int i_bg, int rows, int cols,const char *i_type = "full") {
+		init_pair(1,i_fg,i_bg);
+		init_pair(2,0,i_bg);
 		type = i_type;
 		sizey = rows; sizex = cols;
 		mask = (int* )malloc(sizeof(int));
@@ -37,6 +37,12 @@ class binclock {
 
 	~binclock() {
 		delete[] mask;
+		delete timenow;
+	}
+
+	void updateColors(int i_fg, int i_bg) {
+		init_pair(1,i_fg,i_bg);
+		init_pair(2,0,i_bg);
 	}
 	
 	void updateTime() {
