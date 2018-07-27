@@ -1,12 +1,13 @@
 #include "bklk.h"
 #include <unistd.h>
 #include <string.h>
+#include <memory>
 
 int main(int argc, char **argv) {
 	int fg = 7, rows, cols;
 	int ch;
 	cursesInit();
-	binclock* clk = new binclock(fg,-1,LINES,COLS,"full");
+	std::unique_ptr <binclock> clk (new binclock(fg,-1,LINES,COLS,"full"));
 	while(ch != 'q') {
 		ch = getch();
 		if(ch == 'c'){
@@ -18,6 +19,5 @@ int main(int argc, char **argv) {
 		clk->drawTime();
 		usleep(50000);
 	}
-	delete clk;
 	endwin();
 }
