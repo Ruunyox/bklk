@@ -32,6 +32,11 @@ class binclock {
 		init_pair(2,0,bg);
 		type = i_type;
 		sizey = rows; sizex = cols;
+		mask = (int* )malloc(sizeof(int));
+	}
+
+	~binclock() {
+		delete[] mask;
 	}
 	
 	void updateTime() {
