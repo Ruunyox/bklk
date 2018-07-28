@@ -7,7 +7,8 @@
 ---
 
 `bklk` is a simple binary clock for your terminal. `c` cycles the
-color and `q` quits. Type `make` to install. 
+color and `q` quits. The command line flags `-s` and `-m` correspond
+to displaying seconds or minutes. Type `make` to install. 
 
 # Dependencies
 
