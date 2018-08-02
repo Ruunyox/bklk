@@ -38,6 +38,5 @@ int main(int argc, char **argv) {
 		clk->drawTime();
 		usleep(50000);
 	}
-	printf("%s",argv[1]);
 	endwin();
 }
