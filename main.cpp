@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <getopt.h>
+#include <memory>
 
 int main(int argc, char **argv) {
 	int fg = 7, rows, cols,ch,opt;

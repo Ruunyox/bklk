@@ -1,8 +1,9 @@
 #include <ncurses.h>
 #include <stdio.h>
 #include <ctime>
-#include <iostream>
 #include <vector>
+#include <cstring>
+
 
 #define BUFSZ 80
 
