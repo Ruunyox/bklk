@@ -21,7 +21,7 @@ void cursesInit(void){
 class binclock {
 	public:
 	
-	int sizey,sizex,fg;
+	int sizey,sizex,fg,bg;
 	time_t t;
 	char tstring[BUFSZ]; 
 	struct tm *timenow;
@@ -31,8 +31,8 @@ class binclock {
 	int clkwidth;	
 	
 	binclock(int i_fg, int i_bg, int rows, int cols, const char* i_clktype) {
-		init_pair(1,i_fg,i_bg);
-		init_pair(2,0,i_bg);
+		init_pair(1,i_fg,-1);
+		init_pair(2,i_bg,i_bg);
 		sizey = rows; sizex = cols;
 		if(strcmp(i_clktype,"full")==0) {
 			clktype = i_clktype;
@@ -51,8 +51,8 @@ class binclock {
 	}
 
 	void updateColors(int i_fg, int i_bg) {
-		init_pair(1,i_fg,i_bg);
-		init_pair(2,0,i_bg);
+		init_pair(1,i_fg,-1);
+		init_pair(2,i_bg,-1);
 	}
 	
 	void updateTime() {

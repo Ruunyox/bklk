@@ -5,12 +5,16 @@
 #include <memory>
 
 int main(int argc, char **argv) {
-	int fg = 7, rows, cols,ch,opt;
+	int fg = 7, bg = 0, rows, cols,ch,opt;
 	bool flags=false;
 	const char* clktype;
 	
-	while((opt = getopt(argc,argv,"ms")) != -1) {
+	while((opt = getopt(argc,argv,"msl")) != -1) {
 		switch(opt) {
+		case 'l':
+			flags=true;
+			fg = 0;
+			bg = 7;
 		case 's':
 			clktype = "full";
 			flags=true;
@@ -26,12 +30,12 @@ int main(int argc, char **argv) {
 			exit(1);
 	}
 	cursesInit();
-	std::unique_ptr <binclock> clk (new binclock(fg,-1,LINES,COLS,clktype));
+	std::unique_ptr <binclock> clk (new binclock(fg,bg,LINES,COLS,clktype));
 	while(ch != 'q') {
 		ch = getch();
 		if(ch == 'c'){
 			fg = (fg + 1)%8;
-			clk->updateColors(fg,-1);	
+			clk->updateColors(fg,bg);	
 			continue;
 		}
 		clk->updateTime();
