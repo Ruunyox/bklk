@@ -15,6 +15,7 @@ int main(int argc, char **argv) {
 			flags=true;
 			fg = 0;
 			bg = 7;
+			break;
 		case 's':
 			clktype = "full";
 			flags=true;
