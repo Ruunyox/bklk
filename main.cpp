@@ -5,7 +5,7 @@
 #include <memory>
 
 int main(int argc, char **argv) {
-	int fg = 7, bg = 0, rows, cols,ch,opt;
+	int fg = 7, bg = 0, ch, opt;
 	bool flags=false;
 	const char* clktype;
 	
@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
 			printf("bklk: usage & display options:\n\t-s\tseconds\n\t-m\tminutes");
 			exit(1);
 	}
-	cursesInit();
+	curses_init();
 	std::unique_ptr <binclock> clk (new binclock(fg,bg,LINES,COLS,clktype));
 	while(ch != 'q') {
 		ch = getch();
@@ -39,6 +39,10 @@ int main(int argc, char **argv) {
 			clk->updateColors(fg,bg);	
 			continue;
 		}
+        if(ch == KEY_RESIZE) {
+            curses_init();
+            clk.reset(new binclock(fg,bg,LINES,COLS,clktype));
+        }
 		clk->updateTime();
 		clk->drawTime();
 		usleep(50000);

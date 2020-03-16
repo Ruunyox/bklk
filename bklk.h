@@ -4,10 +4,9 @@
 #include <vector>
 #include <cstring>
 
-
 #define BUFSZ 80
 
-void cursesInit(void){
+void curses_init(void){
     initscr();
     start_color();
 	use_default_colors();
@@ -46,10 +45,6 @@ class binclock {
 		}
 	}
 
-	~binclock() {
-		delete timenow;
-	}
-
 	void updateColors(int i_fg, int i_bg) {
 		init_pair(1,i_fg,-1);
 		init_pair(2,i_bg,-1);
@@ -58,12 +53,20 @@ class binclock {
 	void updateTime() {
 		t = time(0);
 		timenow = localtime(&t);
-		digits[0] = (timenow->tm_hour/10);
-		digits[1] = (timenow->tm_hour- digits[0]*10);
-		digits[2] = (timenow->tm_min/ 10);	
-		digits[3] = (timenow->tm_min- digits[2]*10);	
-		digits[4] = (timenow->tm_sec/ 10);	
-		digits[5] = (timenow->tm_sec- digits[4]*10);	
+        if(strcmp(clktype,"full")==0) {
+ 		    digits[0] = (timenow->tm_hour/10);
+		    digits[1] = (timenow->tm_hour- digits[0]*10);
+		    digits[2] = (timenow->tm_min/ 10);	
+		    digits[3] = (timenow->tm_min- digits[2]*10);	
+		    digits[4] = (timenow->tm_sec/ 10);	
+		    digits[5] = (timenow->tm_sec- digits[4]*10);	
+        }
+        if(strcmp(clktype,"reduced")==0) {
+ 		    digits[0] = (timenow->tm_hour/10);
+		    digits[1] = (timenow->tm_hour- digits[0]*10);
+		    digits[2] = (timenow->tm_min/ 10);	
+		    digits[3] = (timenow->tm_min- digits[2]*10);	
+        }
 	} 
 	
 	void mkMask(int in, int (&mask)[8]){
