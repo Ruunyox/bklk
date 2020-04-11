@@ -13,6 +13,7 @@ int main(int argc, char **argv) {
 		switch(opt) {
 		case 'l':
 			flags=true;
+			clktype = "reduced";
 			fg = 0;
 			bg = 7;
 			break;
