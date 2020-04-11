@@ -32,7 +32,7 @@ int main(int argc, char **argv) {
 			exit(1);
 	}
 	curses_init();
-    auto clk = std::make_unique<binclock>(fg,bg,LINES,COLS,clktype);
+	auto clk = std::make_unique<binclock>(fg,bg,LINES,COLS,clktype);
 	while(ch != 'q') {
 		ch = getch();
 		if(ch == 'c'){
