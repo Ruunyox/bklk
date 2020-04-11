@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
 			exit(1);
 	}
 	curses_init();
-	std::unique_ptr <binclock> clk (new binclock(fg,bg,LINES,COLS,clktype));
+    auto clk = std::make_unique<binclock>(fg,bg,LINES,COLS,clktype);
 	while(ch != 'q') {
 		ch = getch();
 		if(ch == 'c'){
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
 		}
         if(ch == KEY_RESIZE) {
             curses_init();
-            clk.reset(new binclock(fg,bg,LINES,COLS,clktype));
+            clk = std::make_unique<binclock>(fg,bg,LINES,COLS,clktype);
         }
 		clk->updateTime();
 		clk->drawTime();

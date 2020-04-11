@@ -1,4 +1,4 @@
-STD=c++11
+STD=c++14
 CC = g++
 LIBS = -lncurses
 
