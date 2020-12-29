@@ -3,6 +3,7 @@
 #include <string.h>
 #include <getopt.h>
 #include <memory>
+#include <cstdlib>
 
 int main(int argc, char **argv) {
 	int fg = 7, bg = 0, ch, opt;
