@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
     }
   }
   if (flags == false) {
-    printf("\nbklk: usage & display options:\n\t-s\tseconds\n\t-m\tminutes\n\n");
+    printf("\nbklk: usage & display options:\n\t-s\tseconds\n\t-m\tminutes\n\t-l\tlight colorscheme\n\n");
     exit(1);
   }
   curses_init();
